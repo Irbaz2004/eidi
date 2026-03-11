@@ -90,23 +90,24 @@ const EidiReveal = () => {
     frame();
   };
 
-  const handleCopyLink = () => {
-    // Create encoded version for sharing
-    const shareableData = {
-      from,
-      to,
-      relationship,
-      amount,
-      message
-    };
-    
-    const encodedString = encodeData(shareableData);
-    const shareableUrl = `${window.location.origin}/eidi?data=${encodedString}`;
-    
-    navigator.clipboard.writeText(shareableUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+ const handleCopyLink = () => {
+  const shareableData = {
+    from,
+    to,
+    relationship,
+    amount,
+    message
   };
+  
+  const encodedString = encodeData(shareableData);
+  // Check if we're on /eidi route or root
+  const basePath = window.location.pathname.includes('/eidi') ? '/eidi' : '';
+  const shareableUrl = `${window.location.origin}${basePath}?data=${encodedString}`;
+  
+  navigator.clipboard.writeText(shareableUrl);
+  setCopied(true);
+  setTimeout(() => setCopied(false), 2500);
+};
 
   const stepVariants = {
     hidden: { opacity: 0, y: 24 },
