@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Islamic Green & Gold Palette */
+    --background: 150 40% 5%;
+    --foreground: 48 80% 92%;
+
+    --card: 150 35% 8%;
+    --card-foreground: 48 80% 92%;
+
+    --popover: 150 35% 8%;
+    --popover-foreground: 48 80% 92%;
+
+    --primary: 145 67% 20%;
+    --primary-foreground: 48 80% 92%;
+
+    --secondary: 150 30% 14%;
+    --secondary-foreground: 48 80% 85%;
+
+    --muted: 150 25% 12%;
+    --muted-foreground: 150 15% 55%;
+
+    --accent: 45 72% 52%;
+    --accent-foreground: 150 40% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 48 80% 92%;
+
+    --border: 150 25% 18%;
+    --input: 150 25% 15%;
+    --ring: 45 72% 52%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gold: 45 72% 52%;
+    --gold-light: 48 90% 68%;
+    --gold-dark: 38 60% 35%;
+    --emerald: 145 67% 20%;
+    --emerald-light: 145 55% 30%;
+    --emerald-deep: 150 70% 10%;
+    --cream: 48 80% 92%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(150 70% 6%) 0%, hsl(145 60% 10%) 50%, hsl(150 70% 5%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(150 35% 10% / 0.9) 0%, hsl(145 40% 7% / 0.95) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 60% 40%) 0%, hsl(48 90% 65%) 50%, hsl(38 60% 40%) 100%);
+    --gradient-envelope: linear-gradient(145deg, hsl(145 65% 18%) 0%, hsl(150 70% 12%) 100%);
+
+    /* Glassmorphism */
+    --glass-bg: hsl(150 40% 8% / 0.6);
+    --glass-border: hsl(45 72% 52% / 0.2);
+    --glass-shadow: 0 8px 32px hsl(150 70% 3% / 0.6);
+
+    /* Glow effects */
+    --glow-gold: 0 0 30px hsl(45 72% 52% / 0.4), 0 0 60px hsl(45 72% 52% / 0.2);
+    --glow-emerald: 0 0 30px hsl(145 67% 20% / 0.5), 0 0 60px hsl(145 67% 20% / 0.3);
+
+    --sidebar-background: 150 40% 5%;
+    --sidebar-foreground: 48 80% 92%;
+    --sidebar-primary: 45 72% 52%;
+    --sidebar-primary-foreground: 150 40% 5%;
+    --sidebar-accent: 150 30% 14%;
+    --sidebar-accent-foreground: 48 80% 92%;
+    --sidebar-border: 150 25% 18%;
+    --sidebar-ring: 45 72% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-hero);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .gold-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-border {
+    border-color: hsl(var(--gold));
+    box-shadow: var(--glow-gold);
+  }
+
+  .btn-gold {
+    background: var(--gradient-gold);
+    color: hsl(var(--accent-foreground));
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px hsl(45 72% 52% / 0.3);
+  }
+
+  .btn-gold:hover {
+    box-shadow: var(--glow-gold);
+    transform: translateY(-2px);
+  }
+
+  .islamic-input {
+    background: hsl(150 35% 8% / 0.8);
+    border: 1px solid hsl(45 72% 52% / 0.25);
+    color: hsl(var(--cream));
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+  }
+
+  .islamic-input:focus {
+    border-color: hsl(var(--gold));
+    box-shadow: 0 0 0 2px hsl(45 72% 52% / 0.15);
+    outline: none;
+  }
+
+  .islamic-input::placeholder {
+    color: hsl(150 15% 45%);
+  }
+
+  .star {
+    position: absolute;
+    background: hsl(var(--gold-light));
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+  }
+
+  .lantern-glow {
+    filter: drop-shadow(0 0 12px hsl(45 72% 52% / 0.6));
+  }
+}
+
+@layer utilities {
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes envelope-open {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(-180deg); }
+}
+
+@keyframes money-pop {
+  0% { transform: translateY(0) scale(0); opacity: 0; }
+  60% { transform: translateY(-80px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-60px) scale(1); opacity: 1; }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+@keyframes crescent-glow {
+  0%, 100% { filter: drop-shadow(0 0 8px hsl(45 72% 52% / 0.4)); }
+  50% { filter: drop-shadow(0 0 20px hsl(45 72% 52% / 0.8)); }
+}
