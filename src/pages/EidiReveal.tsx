@@ -100,8 +100,8 @@ const handleCopyLink = () => {
   };
   
   const encodedString = encodeData(shareableData);
-  // Use root path (/) since that's likely where your app is served
-  const shareableUrl = `${window.location.origin}/?data=${encodedString}`;
+  // Include /eidi so that the link goes to the correct route to display the greeting
+  const shareableUrl = `${window.location.origin}/eidi?data=${encodedString}`;
   
   navigator.clipboard.writeText(shareableUrl);
   setCopied(true);
