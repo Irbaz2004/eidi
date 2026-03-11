@@ -7,15 +7,48 @@ import IslamicBackground from "@/components/IslamicBackground";
 import EnvelopeAnimation from "@/components/EnvelopeAnimation";
 import ReceiptCard from "@/components/ReceiptCard";
 
+// Simple encoding/decoding functions
+const encodeData = (data) => {
+  return btoa(encodeURIComponent(JSON.stringify(data)));
+};
+
+const decodeData = (encoded) => {
+  try {
+    return JSON.parse(decodeURIComponent(atob(encoded)));
+  } catch (error) {
+    return null;
+  }
+};
+
 const EidiReveal = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const from = searchParams.get("from") || "Someone";
-  const to = searchParams.get("to") || "You";
-  const relationship = searchParams.get("relationship") || "Loved One";
-  const amount = searchParams.get("amount") || "0";
-  const message = searchParams.get("message") || "Eid Mubarak!";
+  // Try to get encoded data first, fallback to individual params
+  const encodedData = searchParams.get("data");
+  
+  let from = "Someone";
+  let to = "You";
+  let relationship = "Loved One";
+  let amount = "0";
+  let message = "Eid Mubarak!";
+
+  if (encodedData) {
+    const decoded = decodeData(encodedData);
+    if (decoded) {
+      from = decoded.from || from;
+      to = decoded.to || to;
+      relationship = decoded.relationship || relationship;
+      amount = decoded.amount || amount;
+      message = decoded.message || message;
+    }
+  } else {
+    from = searchParams.get("from") || from;
+    to = searchParams.get("to") || to;
+    relationship = searchParams.get("relationship") || relationship;
+    amount = searchParams.get("amount") || amount;
+    message = searchParams.get("message") || message;
+  }
 
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(0);
@@ -58,7 +91,19 @@ const EidiReveal = () => {
   };
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
+    // Create encoded version for sharing
+    const shareableData = {
+      from,
+      to,
+      relationship,
+      amount,
+      message
+    };
+    
+    const encodedString = encodeData(shareableData);
+    const shareableUrl = `${window.location.origin}/eidi?data=${encodedString}`;
+    
+    navigator.clipboard.writeText(shareableUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
