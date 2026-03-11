@@ -90,7 +90,7 @@ const EidiReveal = () => {
     frame();
   };
 
- const handleCopyLink = () => {
+const handleCopyLink = () => {
   const shareableData = {
     from,
     to,
@@ -100,9 +100,8 @@ const EidiReveal = () => {
   };
   
   const encodedString = encodeData(shareableData);
-  // Check if we're on /eidi route or root
-  const basePath = window.location.pathname.includes('/eidi') ? '/eidi' : '';
-  const shareableUrl = `${window.location.origin}${basePath}?data=${encodedString}`;
+  // Use root path (/) since that's likely where your app is served
+  const shareableUrl = `${window.location.origin}/?data=${encodedString}`;
   
   navigator.clipboard.writeText(shareableUrl);
   setCopied(true);
