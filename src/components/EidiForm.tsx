@@ -5,9 +5,9 @@ import { Send, Sparkles, Gift } from "lucide-react";
 import IslamicBackground from "./IslamicBackground";
 
 const RELATIONSHIPS = [
-  "Wife", "Husband", "Mother", "Father", "Sister", "Brother",
-  "Girlfriend", "Boyfriend", "Daughter", "Son", "Uncle", "Aunty",
-  "Grandmother", "Grandfather", "Friend", "Cousin",
+  "Wife", "Husband", "Sister", "Brother",
+  "Girlfriend", "Boyfriend", "Daughter", "Son",
+  "Friend", "Cousin",
 ];
 
 const containerVariants: Variants = {
@@ -265,6 +265,16 @@ const EidiForm = () => {
           transition={{ delay: 1.2 }}
         >
           ✨ Spread joy & blessings this Eid al-Fitr ✨
+        </motion.p>
+          <motion.p
+          className="text-center text-muted-foreground text-xs font-poppins mt-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+        >
+           Developed By <a href="https://ruzix.in" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">
+             Ruzix
+           </a> 
         </motion.p>
       </div>
     </div>

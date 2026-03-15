@@ -274,6 +274,16 @@ const handleCopyLink = () => {
                 <Home className="w-3 h-3" />
                 Back to Home
               </motion.button>
+              <motion.p
+          className="text-center text-muted-foreground text-xs font-poppins mt-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+        >
+           Developed By <a href="https://ruzix.in" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">
+             Ruzix
+           </a> 
+        </motion.p>
             </motion.div>
           )}
         </AnimatePresence>

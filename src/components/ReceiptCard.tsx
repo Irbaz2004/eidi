@@ -65,7 +65,7 @@ const ReceiptCard = ({ from, to, relationship, amount, message }: ReceiptCardPro
 
         {/* Arabic text */}
         <div style={{ textAlign: "center", marginBottom: "6px" }}>
-          <p style={{ fontFamily: "serif", fontSize: "13px", color: "#c9a84c", letterSpacing: "0.15em", marginBottom: "6px" }}>
+          <p style={{ fontFamily: "serif", fontSize: "13px", color: "#c9a84c", letterSpacing: "15px !important", marginBottom: "6px" }}>
             ☽ عيد مبارك ☾
           </p>
           {/* Eid Mubarak — solid gold, NO webkit clip */}
